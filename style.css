@@ -1,4 +1,47 @@
 
 body{
-    background-color: rgb(113, 212, 249);
+    background-image: url('https://wallpapercave.com/wp/wp2656997.jpg');
+    
+}
+
+
+h3{
+    text-align: center;
+    font-family: "Georgia";
+    font-size: 18px;
+}
+
+.affirm-text {
+    font-family: "Abril Fatface", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    padding-bottom: 30px;
+    padding-top: 20px;
+  }
+
+  .button-container{
+    display: flex;
+    justify-content: center;
+ 
+  }
+  
+#new-affirm{
+    
+    background-color: rgb(218, 178, 250);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.284);
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: "Georgia";
+    
+}
+
+#new-affirm:hover{
+    background-color: rgb(117, 188, 250);
+}
+
+#new-affirm:active{
+    transform: translate(0, 0.3rem);
+  box-shadow: 0 0.1rem rgba(255, 255, 255, 0.65);
 }

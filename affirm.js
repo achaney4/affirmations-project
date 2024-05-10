@@ -1,50 +1,34 @@
-
-const affirmContainer = document.getElementById('affirm-container');
 const affirmText = document.getElementById('affirm');
 const newAffirmBtn = document.getElementById('new-affirm');
 
 
-let apiAffirm = [];
-
-  
-
-  // Show New Quote
-function newAffirm() {
+  // show new affirmation
+async function newAffirm() {
     //loading();
     // Pick a random quote from apiQuotes array
-    const affirmation = apiAffirm[Math.floor(Math.random() * apiAffirm.length)];
-    
-    affirmText.textContent = affirmation.text;
-    
+    const affirmations = await fetchAffirmations();
+    const randIndex = Math.floor(Math.random() * affirmations.length);
+    const randAffirm = affirmations[randIndex];
+    affirmText.textContent = randAffirm;
+
   }
 
-    // Get Quotes From API 
-    /*async function getAffirms() {
-        //loading();
-        const apiUrl = 'https://type.fit/api/quotes';
-        try {
-          const response = await fetch(apiUrl);
-          apiAffirm = await response.json();
-          newAffirm();
-        } catch (error) {
-          // Catch Error Here
+
+  // fetch affirmations from API
+  async function fetchAffirmations() {
+    try {
+        const response = await fetch('https://raw.githubusercontent.com/avyrie/affirmations-api/main/affirmations.json');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
-      }*/
-
-  // Get Quotes From API 
-    async function getAffirms() {
-        //loading();
-        const apiUrl = 'affirmApi.json';
-        try {
-          const response = await fetch(apiUrl);
-          apiAffirm = await response.json();
-          newAffirm();
-        } catch (error) {
-          // Catch Error Here
-        }
-      }
-
-
-getAffirms();
-
+        data = await response.json();
+        return data.affirmations;
+    } catch (error) {
+        console.error('Error fetching affirmations:', error);
+        return []; // Return an empty array in case of an error
+    }
+}
+    
+newAffirm();
+newAffirmBtn.addEventListener('click', newAffirm);
  
